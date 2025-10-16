@@ -651,4 +651,117 @@
     text-align: center;
    }
 
-   
+   /* MODAL */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  display: none;
+}
+
+.form-container,
+.overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.form-container.active,
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+.form-container {
+  position: fixed;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* ✅ Centers both horizontally and vertically */
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh; /* ✅ prevent overflowing screen height */
+  overflow-y: auto; /* ✅ scroll only inside modal */
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-weight: bold;
+      margin: 15px 0 5px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+
+      &:focus {
+        outline: none;
+        border-color: #4caf50;
+        box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #4caf50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  }
+}
+
+/* Close button */
+.btn-close {
+  background: transparent;
+  position:absolute;
+  border: none;
+  font-size: 24px;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+/* END MODAL */

@@ -12,8 +12,8 @@
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <script src="./home.js" type="module"></script>
-    <script src="./slide.js" type="module"></script>
+    <script src="./src/js/home.js" type="module"></script>
+    <script src="./src/js/slide.js" type="module"></script>
 </head>
 <body x-data="{ openMenu: false }" :style="openMenu ? 'overflow: hidden;' : 'overflow:visible;'">
     <header>
@@ -26,13 +26,62 @@
         <nav class="nav">
             <img src="./src/image/header-logo.png" alt="logo" class="logo">
             <ul>
-                <li><a href="./home.html">Home</a></li>
-                <li><a href="./adopt.html">About</a></li>
-                <li><a href="./donate.html">Adopt</a></li>
-                <li><a href="./donate.html">Donate</a></li>
-                <li><a href="./volunteer.html">FAQ</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Adopt</a></li>
+                <li><a href="#">Donate</a></li>
+                <li><a href="#">FAQ</a></li>
             </ul>
         </nav>
+        <div class="overlay"></div>
+        <div class="form-container">
+        <button class="btn-close">&times;</button>
+        <h2>🐶 Pet Adoption Form 🐱</h2>
+        <form id="adoptionForm">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="petType">Preferred Pet Type</label>
+            <select id="petType" name="petType" required>
+            <option value="">-- Select a Pet --</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="rabbit">Rabbit</option>
+            <option value="bird">Bird</option>
+            <option value="other">Other</option>
+            </select>
+
+            <label for="petName">Name of Pet (if known)</label>
+            <input type="text" id="petName" name="petName" placeholder="Optional">
+
+            <label for="homeType">Type of Home</label>
+            <select id="homeType" name="homeType" required>
+            <option value="">-- Select --</option>
+            <option value="house">House</option>
+            <option value="apartment">Apartment</option>
+            <option value="farm">Farm</option>
+            <option value="other">Other</option>
+            </select>
+
+            <label for="reason">Why do you want to adopt a pet?</label>
+            <textarea id="reason" name="reason" required></textarea>
+
+            <label for="experience">Do you have previous experience with pets?</label>
+            <select id="experience" name="experience" required>
+            <option value="">-- Select --</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            </select>
+
+            <button type="submit">Submit Application</button>
+        </form>
+        </div>
         <div class="pet-intro">
             <h1>Don`t buy instead Adopt</h1>
             <p>We are dedicated to finding loving homes for pets in need.</br>Please Help them to find a new family, who will love theme!</p>
@@ -59,11 +108,11 @@
     <div id="mobile-navigation" class="mobile-menu" x-show="openMenu" x-transition x-cloak>
         <img style="margin:1rem;" width="50" src="./src/image/header-logo.png" alt="logo" class="logo">
         <ul>
-            <li><a href="./home.html">Home</a></li>
-            <li><a href="./adopt.html">About</a></li>
-            <li><a href="./donate.html">Adopt</a></li>
-            <li><a href="./donate.html">Donate</a></li>
-            <li><a href="./volunteer.html">FAQ</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Adopt</a></li>
+            <li><a href="#">Donate</a></li>
+            <li><a href="#">FAQ</a></li>
 
         </ul>
         <button @click="openMenu = !openMenu" class="button-close" :aria-expanded="openMenu" aria-controls="mobile-navigation" aria-label="Close Navigation Menu">
@@ -72,6 +121,9 @@
                 </svg>
         </button>
     </div>
+
+ 
+    
 
     <main>
     <div class="bend-layout-button">   
@@ -169,7 +221,7 @@
         <section class="our-statistics">
             <h2>Our statistic</h2>
             <p>We are dedicated to finding loving homes for pets in need.</p>
-            <div class="grid-statistics" data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="1000">
+            <div class="grid-statistics" data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="">
                 <div class="utility-name">
                 <div class="statistics">
                     <div class="container-statistics">
