@@ -608,6 +608,47 @@ h1 {
   left: 0;
 }
 
+.donate-form {
+  text-align: center;
+  z-index: 10000;
+  background: #fff;
+  border-radius: 1rem;
+  width: 340px;
+  max-width: 90%;
+  padding: 1.5rem;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 10px 30px #00000040;
+}
+
+.donate-form h2 {
+  color: #222;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.donate-form img.qr-img {
+  object-fit: contain;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  display: block;
+}
+
+.donate-form .btn-close {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
 .form-container, .overlay {
   opacity: 0;
   transition: opacity .3s;

@@ -82,6 +82,51 @@
             <button type="submit">Submit Application</button>
         </form>
         </div>
+        <div class="form-container volunteer-form">
+            <button class="btn-close">&times;</button>
+            <h2>🤝 Volunteer Application Form</h2>
+
+            <form id="volunteerForm">
+                <label for="volName">Full Name</label>
+                <input type="text" id="volName" name="volName" required>
+
+                <label for="volEmail">Email Address</label>
+                <input type="email" id="volEmail" name="volEmail" required>
+
+                <label for="volPhone">Phone Number</label>
+                 
+                <input type="tel" id="volPhone" name="volPhone" required>
+
+                <label for="availability">Availability</label>
+                <select id="availability" name="availability" required>
+                <option value="">-- Select --</option>
+                <option value="weekdays">Weekdays</option>
+                <option value="weekends">Weekends</option>
+                <option value="both">Both</option>
+                </select>
+
+                <label for="skills">Relevant Skills or Experience</label>
+                <textarea id="skills" name="skills" placeholder="Tell us about your experience..." required></textarea>
+
+                <label for="area">Preferred Volunteer Area</label>
+                <select id="area" name="area" required>
+                <option value="">-- Select --</option>
+                <option value="animal-care">Animal Care</option>
+                <option value="fundraising">Fundraising</option>
+                <option value="event-support">Event Support</option>
+                <option value="admin-work">Admin Work</option>
+                <option value="others">Others</option>
+                </select>
+
+                <button type="submit">Submit Application</button>
+            </form>
+        </div>
+        <div class="donate-form">
+            <button class="btn-close">×</button>
+            <h2>Scan to Donate</h2>
+            <img src="./src/image/qr.png" alt="QR Code" class="qr-img" />
+        </div>
+        
         <div class="pet-intro">
             <h1>Don`t buy instead Adopt</h1>
             <p>We are dedicated to finding loving homes for pets in need.</br>Please Help them to find a new family, who will love theme!</p>
