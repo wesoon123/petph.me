@@ -124,7 +124,21 @@
             <h2>Scan to Donate</h2>
             <img src="/QR_Code_Example.svg.3556acff.png" alt="QR Code" class="qr-img">
         </div>
-        
+        <div class="breeds-modal" id="breed-modal">
+                <div class="modal-content">
+                    <span class="close-modal" id="close-modal">×</span>
+                    <h1>🐶 Random Dog by Breed</h1>
+                    <select id="breed-select">
+                    <option value="">-- Select Breed --</option>
+                    </select>
+
+                    <div id="content">
+                    <div class="loader" id="loader">Select a breed to see a dog 🐾</div>
+                    <img id="dog-img" alt="Random dog" style="display: none">
+                    <h2 id="dog-name"></h2>
+                    </div>
+                </div>
+        </div>
         <div class="pet-intro">
             <h1>Don`t buy instead Adopt</h1>
             <p>We are dedicated to finding loving homes for pets in need.<br>Please Help them to find a new family, who will love theme!</p>
@@ -258,7 +272,7 @@
                     </div>
                 </div>
             </div>
-            <div class="more">See all pets</div>
+            <div class="breeds-btn">Breeds list</div>
         </section>
     </div> 
         <section class="our-statistics">

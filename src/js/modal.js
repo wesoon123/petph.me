@@ -1,60 +1,52 @@
 export function setupAdoptModal() {
-  const btnAdopt = document.querySelector(".key-link .key-links:first-child");
-  const btnVolunteer = document.querySelector(".key-link .key-links:nth-child(2)");
-  const btnDonate = document.querySelector(".key-link .key-links:nth-child(3)"); // 🆕 donate button
+  // 🟢 Buttons
+  const [btnAdopt, btnVolunteer, btnDonate] = document.querySelectorAll(".key-link .key-links");
+  const btnBreeds = document.querySelector(".breeds-btn");
 
-  const adoptModal = document.querySelector(".form-container");
-  const volunteerModal = document.querySelector(".volunteer-form");
-  const donateModal = document.querySelector(".donate-form"); // 🆕 donate modal (QR code modal)
+  // 🟣 Modals
+  const [adoptModal, volunteerModal, donateModal] = document.querySelectorAll(
+    ".form-container, .volunteer-form, .donate-form"
+  );
+  const breedsModal = document.querySelector("#breed-modal");
 
+  // 🔴 Close buttons
   const closeAdopt = adoptModal?.querySelector(".btn-close");
   const closeVolunteer = volunteerModal?.querySelector(".btn-close");
-  const closeDonate = donateModal?.querySelector(".btn-close"); // 🆕 donate close button
+  const closeDonate = donateModal?.querySelector(".btn-close");
+  const closeBreeds = breedsModal?.querySelector(".close-modal");
 
   const overlay = document.querySelector(".overlay");
 
+  // 🧩 Put all modals together for easy iteration
+  const modals = [adoptModal, volunteerModal, donateModal, breedsModal];
+
   if (!overlay) return;
 
-  // 🐶 OPEN Adopt Modal
-  btnAdopt?.addEventListener("click", (e) => {
-    e.preventDefault();
-    openModal(adoptModal);
+  // 🐾 OPEN handlers
+  btnAdopt?.addEventListener("click", (e) => openHandler(e, adoptModal));
+  btnVolunteer?.addEventListener("click", (e) => openHandler(e, volunteerModal));
+  btnDonate?.addEventListener("click", (e) => openHandler(e, donateModal));
+  btnBreeds?.addEventListener("click", (e) => openHandler(e, breedsModal));
+
+  // ❌ CLOSE handlers
+  [closeAdopt, closeVolunteer, closeDonate, closeBreeds].forEach((btn, i) => {
+    btn?.addEventListener("click", () => closeModal(modals[i]));
   });
 
-  // ✋ OPEN Volunteer Modal
-  btnVolunteer?.addEventListener("click", (e) => {
-    e.preventDefault();
-    openModal(volunteerModal);
-  });
+  // 🕳️ Overlay click closes all modals
+  overlay.addEventListener("click", () => modals.forEach(closeModal));
 
-  // 💸 OPEN Donate Modal (QR)
-  btnDonate?.addEventListener("click", (e) => {
-    e.preventDefault();
-    openModal(donateModal);
-  });
-
-  // ❌ CLOSE buttons
-  closeAdopt?.addEventListener("click", () => closeModal(adoptModal));
-  closeVolunteer?.addEventListener("click", () => closeModal(volunteerModal));
-  closeDonate?.addEventListener("click", () => closeModal(donateModal));
-
-  // 🕳️ Click outside overlay closes all
-  overlay.addEventListener("click", () => {
-    closeModal(adoptModal);
-    closeModal(volunteerModal);
-    closeModal(donateModal);
-  });
-
-  // ⌨️ ESC key closes all
+  // ⌨️ ESC key closes all modals
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeModal(adoptModal);
-      closeModal(volunteerModal);
-      closeModal(donateModal);
-    }
+    if (e.key === "Escape") modals.forEach(closeModal);
   });
 
   // 🔹 Helper functions
+  function openHandler(e, modal) {
+    e.preventDefault();
+    openModal(modal);
+  }
+
   function openModal(modal) {
     if (!modal) return;
     modal.classList.add("active");

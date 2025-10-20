@@ -323,7 +323,7 @@
         max-width: 100%;
     }
 
-    .more {
+    .breeds-btn {
         margin: auto ;
         margin-block: 5%;
         text-align: center;
@@ -659,7 +659,7 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 9998;
+  z-index: 1000; /* below modals */
   display: none;
 }
 
@@ -677,7 +677,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   text-align: center;
   overflow: hidden;
-  z-index: 10000;
+  z-index: 1001;
 }
 
 .donate-form h2 {
@@ -702,6 +702,23 @@
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.form-container.active,
+.volunteer-form.active,
+.donate-form.active,
+.breeds-modal.active  {
+  animation: popIn 0.25s ease;
+}
+@keyframes popIn {
+  from {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
 }
 
 .form-container,
@@ -730,7 +747,7 @@
   padding: 25px 30px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 9999;
+  z-index: 1001;
 
   h2 {
     text-align: center;
@@ -806,3 +823,77 @@
 }
 
 /* END MODAL */
+
+/* BREEDS MODAL */
+.breeds-btn {
+    background-color: #fbdc60;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  /* 🐾 Modal Styles */
+.breeds-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 400px;
+  max-width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  z-index: 1001;
+  display: none;
+
+  &.active {
+    animation: popIn 0.25s ease;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  .modal-content {
+    p {
+      margin-top: 20px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    h2 {
+        color: #444;
+        text-align: center;
+    
+    }
+  }
+}
+
+#breed-select {
+    padding: 10px 15px;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+
+  

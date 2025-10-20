@@ -279,7 +279,7 @@ h1 {
     transition: all .3s ease-in-out;
   }
 
-  & .more {
+  & .breeds-btn {
     text-align: center;
     color: #313131;
     cursor: pointer;
@@ -598,7 +598,7 @@ h1 {
 }
 
 .overlay {
-  z-index: 9998;
+  z-index: 1000;
   background: #00000080;
   width: 100%;
   height: 100%;
@@ -610,7 +610,7 @@ h1 {
 
 .donate-form {
   text-align: center;
-  z-index: 10000;
+  z-index: 1001;
   background: #fff;
   border-radius: 1rem;
   width: 340px;
@@ -649,6 +649,22 @@ h1 {
   right: 15px;
 }
 
+.form-container.active, .volunteer-form.active, .donate-form.active, .breeds-modal.active {
+  animation: .25s popIn;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%)scale(.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%)scale(1);
+  }
+}
+
 .form-container, .overlay {
   opacity: 0;
   transition: opacity .3s;
@@ -660,7 +676,7 @@ h1 {
 }
 
 .form-container {
-  z-index: 9999;
+  z-index: 1001;
   background: #fff;
   border-radius: 12px;
   width: 90%;
@@ -743,5 +759,75 @@ h1 {
   &:hover {
     color: #000;
   }
+}
+
+.breeds-btn {
+  cursor: pointer;
+  background-color: #fbdc60;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-weight: bold;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 6px #0000001a;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px #00000026;
+  }
+}
+
+.breeds-modal {
+  z-index: 1001;
+  background: #fff;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  padding: 20px;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 5px 20px #0000004d;
+
+  &.active {
+    animation: .25s popIn;
+  }
+
+  & .close-modal {
+    cursor: pointer;
+    font-size: 22px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+  }
+
+  & .modal-content {
+    & p {
+      color: #555;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+
+    & h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    & h2 {
+      color: #444;
+      text-align: center;
+    }
+  }
+}
+
+#breed-select {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
 }
 /*# sourceMappingURL=home.c5ecc01e.css.map */
