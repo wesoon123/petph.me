@@ -1,5 +1,6 @@
 import { setupAdoptModal } from "./modal.js";
 import { getBreeds, getRandomDogByBreed } from './petAPI.js';
+import { setupStatsCounter } from './statistic.js';
 AOS.init();
 
 const select = document.getElementById('breed-select');
@@ -66,3 +67,8 @@ async function showDog() {
 
 select.addEventListener('change', showDog);
 loadBreeds();
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupAdoptModal();
+  setupStatsCounter();
+});

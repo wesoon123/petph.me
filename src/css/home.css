@@ -32,7 +32,7 @@
                 padding: 0;
                 font-size: 1.2rem;
                 font-weight: 900;
-                color:aliceblue;
+                color:#121212;
                 cursor: pointer;
                 transition: all 0.1s ease-in-out;
                 text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
@@ -96,12 +96,8 @@
     z-index: 10;
     height: 100%;
     /* From https://css.glass */
-    background: linear-gradient(
-        228deg,
-        rgba(0, 110, 255, 0.61) 12%,
-        rgba(61, 181, 255, 0.85) 58%,
-        rgba(78, 170, 173, 0.64) 100%
-      );
+    background: #fcf800;
+    background: linear-gradient(90deg,rgba(252, 248, 0, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
       background-blend-mode: normal;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.6px);
@@ -123,14 +119,20 @@
     }
   }
 
-  .mobile-menu {
+  .mobile-menu , .fade-in-right {
     -webkit-animation-name: fadeInRight;
     animation-name: fadeInRight;
     -webkit-animation-duration: 1s;
-    animation-duration: 1s;
+    animation-duration: 400ms;;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     }
+
+    .fade-out-right {
+  animation-name: fadeOutRight;
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
     
     @-webkit-keyframes fadeInRight {
     0% {
@@ -157,6 +159,26 @@
     transform: none;
     }
     } 
+
+    @keyframes fadeOutRight {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@-webkit-keyframes fadeInRight { /* identical frames */ 
+  0% { opacity: 0; -webkit-transform: translate3d(100%,0,0); transform: translate3d(100%,0,0); }
+  100% { opacity: 1; -webkit-transform: none; transform: none; }
+}
+@-webkit-keyframes fadeOutRight {
+  0% { opacity: 1; -webkit-transform: none; transform: none; }
+  100% { opacity: 0; -webkit-transform: translate3d(100%,0,0); transform: translate3d(100%,0,0); }
+}
   
   .button-close {
     
@@ -185,14 +207,14 @@
     width: 100%; 
     p {
         padding: .75rem;
-        color: aliceblue;
+        color: #121212;
         font-weight: 900;
       }
   }
 
   h1 {
     padding: .75rem;
-    color: aliceblue;
+    color: #121212;
     font-weight: 900;
   }
 

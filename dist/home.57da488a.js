@@ -716,6 +716,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"3576K":[function(require,module,exports,__globalThis) {
 var _modalJs = require("./modal.js");
 var _petAPIJs = require("./petAPI.js");
+var _statisticJs = require("./statistic.js");
 AOS.init();
 const select = document.getElementById('breed-select');
 const img = document.getElementById('dog-img');
@@ -768,8 +769,12 @@ async function showDog() {
 }
 select.addEventListener('change', showDog);
 loadBreeds();
+document.addEventListener("DOMContentLoaded", ()=>{
+    (0, _modalJs.setupAdoptModal)();
+    (0, _statisticJs.setupStatsCounter)();
+});
 
-},{"./modal.js":"jJ31c","./petAPI.js":"ejojj"}],"jJ31c":[function(require,module,exports,__globalThis) {
+},{"./modal.js":"jJ31c","./petAPI.js":"ejojj","./statistic.js":"fjW78"}],"jJ31c":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "setupAdoptModal", ()=>setupAdoptModal);
@@ -872,15 +877,15 @@ exports.export = function(dest, destName, get) {
 },{}],"ejojj":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-// 🐾 Fetch all breeds with timeout
+// Fetch all breeds with timeout
 parcelHelpers.export(exports, "getBreeds", ()=>getBreeds);
-// 🐕 Fetch random dog image by breed with timeout
+// Fetch random dog image by breed with timeout
 parcelHelpers.export(exports, "getRandomDogByBreed", ()=>getRandomDogByBreed);
 var _webImmediateJs = require("core-js/modules/web.immediate.js");
 var _runtime = require("regenerator-runtime/runtime");
 var _configJs = require("./config.js");
 // ⏱ Generic fetch with timeout helper
-async function fetchWithTimeout(url, timeout = 7000) {
+async function fetchWithTimeout(url, timeout = (0, _configJs.SET_TIMEOUT_DURATION)) {
     const controller = new AbortController();
     const id = setTimeout(()=>controller.abort(), timeout);
     try {
@@ -897,7 +902,7 @@ async function fetchWithTimeout(url, timeout = 7000) {
 }
 async function getBreeds() {
     try {
-        const data = await fetchWithTimeout(`${(0, _configJs.BASE_URL)}/breeds/list/all`, 7000);
+        const data = await fetchWithTimeout(`${(0, _configJs.BASE_URL)}/breeds/list/all`, (0, _configJs.SET_TIMEOUT_DURATION));
         console.log(data);
         return data.message;
     } catch (error) {
@@ -907,7 +912,7 @@ async function getBreeds() {
 }
 async function getRandomDogByBreed(breed) {
     try {
-        const data = await fetchWithTimeout(`${(0, _configJs.BASE_URL)}/breed/${breed}/images/random`, 7000);
+        const data = await fetchWithTimeout(`${(0, _configJs.BASE_URL)}/breed/${breed}/images/random`, (0, _configJs.SET_TIMEOUT_DURATION));
         console.log(data);
         return data.message;
     } catch (error) {
@@ -2758,8 +2763,48 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "BASE_URL", ()=>BASE_URL);
+parcelHelpers.export(exports, "COUNTER_DURATION", ()=>COUNTER_DURATION);
+parcelHelpers.export(exports, "SET_TIMEOUT_DURATION", ()=>SET_TIMEOUT_DURATION);
 const BASE_URL = 'https://dog.ceo/api';
+const COUNTER_DURATION = 2000; // in milliseconds (2 seconds)
+const SET_TIMEOUT_DURATION = 7000; // in milliseconds (7 seconds)
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["7OWRY","3576K"], "3576K", "parcelRequirea877", {})
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"fjW78":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+// Function to animate numbers when they come into view
+parcelHelpers.export(exports, "setupStatsCounter", ()=>setupStatsCounter);
+var _configJs = require("./config.js");
+function setupStatsCounter() {
+    const counters = document.querySelectorAll('.stat-data');
+    let started = false; // To prevent re-triggering when scrolled again
+    // Intersection Observer to trigger counting when visible
+    const observer = new IntersectionObserver((entries)=>{
+        entries.forEach((entry)=>{
+            if (entry.isIntersecting && !started) {
+                started = true;
+                counters.forEach((counter)=>{
+                    let startValue = 0;
+                    const endValue = parseInt(counter.getAttribute('data-val'));
+                    const increment = Math.ceil(endValue / ((0, _configJs.COUNTER_DURATION) / 50)); // dynamic increment// adjust increment based on duration
+                    function updateCount() {
+                        startValue += increment;
+                        counter.textContent = startValue;
+                        if (startValue < endValue) setTimeout(updateCount, 50);
+                        else counter.textContent = endValue; // ensure exact value at the end
+                    }
+                    updateCount();
+                });
+                observer.disconnect(); // stop observing after animation starts
+            }
+        });
+    }, {
+        threshold: 0.4
+    }); // Trigger when 40% visible
+    const section = document.querySelector('.stats');
+    if (section) observer.observe(section);
+}
+
+},{"./config.js":"2hPh4","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["7OWRY","3576K"], "3576K", "parcelRequirea877", {})
 
 //# sourceMappingURL=home.57da488a.js.map

@@ -1,9 +1,9 @@
 import "regenerator-runtime/runtime";
 import "core-js/stable";
-import { BASE_URL } from './config.js';
+import { BASE_URL, SET_TIMEOUT_DURATION } from './config.js';
 
 // ⏱ Generic fetch with timeout helper
-async function fetchWithTimeout(url, timeout = 7000) {
+async function fetchWithTimeout(url, timeout = SET_TIMEOUT_DURATION) {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeout);
 
@@ -24,10 +24,10 @@ async function fetchWithTimeout(url, timeout = 7000) {
   }
 }
 
-// 🐾 Fetch all breeds with timeout
+// Fetch all breeds with timeout
 export async function getBreeds() {
   try {
-    const data = await fetchWithTimeout(`${BASE_URL}/breeds/list/all`, 7000);
+    const data = await fetchWithTimeout(`${BASE_URL}/breeds/list/all`, SET_TIMEOUT_DURATION);
     console.log(data);
     return data.message;
   } catch (error) {
@@ -36,10 +36,10 @@ export async function getBreeds() {
   }
 }
 
-// 🐕 Fetch random dog image by breed with timeout
+// Fetch random dog image by breed with timeout
 export async function getRandomDogByBreed(breed) {
   try {
-    const data = await fetchWithTimeout(`${BASE_URL}/breed/${breed}/images/random`, 7000);
+    const data = await fetchWithTimeout(`${BASE_URL}/breed/${breed}/images/random`, SET_TIMEOUT_DURATION);
     console.log(data);
     return data.message;
   } catch (error) {
