@@ -161,7 +161,7 @@
 
 .hero {
   background-color: #f0f8ff;
-  background-image: url("cover.b2727807.jpg");
+  background-image: url("cover.32306f4c.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -848,5 +848,35 @@ h1 {
   margin: 10px;
   padding: 10px 15px;
   font-size: 16px;
+}
+
+.splide__slide {
+  position: relative;
+  overflow: hidden;
+
+  & img {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  & .slide-caption {
+    color: #000;
+    -webkit-backdrop-filter: blur(8px);
+    text-shadow: 0 1px 2px #00000080;
+    pointer-events: none;
+    background: #ffffff26;
+    border-radius: 8px;
+    max-width: 60%;
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    box-shadow: 0 2px 8px #0003;
+  }
 }
 /*# sourceMappingURL=home.c5ecc01e.css.map */
