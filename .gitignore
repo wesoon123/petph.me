@@ -7,5 +7,5 @@ dist
 # Environment variables
 
 # Cache files
-.cache/
+.cache
 .parcel-cache
