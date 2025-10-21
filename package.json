@@ -13,8 +13,8 @@
   "description": "",
   "default": "home.html",
   "scripts": {
-    "start": "parcel home.html --open",
-    "build": "parcel build home.html --dist-dir docs --public-url ./"
+    "start": "parcel home.html",
+    "build": "parcel build home.html --dist-dir ./dist"
   },
   "author": "",
   "license": "ISC"
