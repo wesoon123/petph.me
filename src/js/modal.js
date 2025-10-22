@@ -1,24 +1,29 @@
 export function setupAdoptModal() {
   // 🟢 Buttons
-  const [btnAdopt, btnVolunteer, btnDonate] = document.querySelectorAll(".key-link .key-links");
-  const btnBreeds = document.querySelector(".breeds-btn");
+const [btnAdopt, btnVolunteer, btnDonate] = document.querySelectorAll(".key-link .key-links"); 
+const btnBreeds = document.querySelector(".breeds-btn"); 
+const btnBlog = document.querySelector(".modal-blog");
+
 
   // 🟣 Modals
   const [adoptModal, volunteerModal, donateModal] = document.querySelectorAll(
     ".form-container, .volunteer-form, .donate-form"
   );
-  const breedsModal = document.querySelector("#breed-modal");
+  const breedsModal = document.querySelector(".breeds-modal");
+  const blogModal = document.querySelector(".pet-blog");
+
 
   // 🔴 Close buttons
   const closeAdopt = adoptModal?.querySelector(".btn-close");
   const closeVolunteer = volunteerModal?.querySelector(".btn-close");
   const closeDonate = donateModal?.querySelector(".btn-close");
-  const closeBreeds = breedsModal?.querySelector(".close-modal");
+  const closeBreeds = breedsModal?.querySelector(".btn-close");
+  const closeBlog = blogModal?.querySelector(".btn-close");
 
   const overlay = document.querySelector(".overlay");
 
   // 🧩 Put all modals together for easy iteration
-  const modals = [adoptModal, volunteerModal, donateModal, breedsModal];
+  const modals = [adoptModal, volunteerModal, donateModal, breedsModal , blogModal];
 
   if (!overlay) return;
 
@@ -27,9 +32,10 @@ export function setupAdoptModal() {
   btnVolunteer?.addEventListener("click", (e) => openHandler(e, volunteerModal));
   btnDonate?.addEventListener("click", (e) => openHandler(e, donateModal));
   btnBreeds?.addEventListener("click", (e) => openHandler(e, breedsModal));
+  btnBlog?.addEventListener("click", (e) => openHandler(e, blogModal));
 
   // ❌ CLOSE handlers
-  [closeAdopt, closeVolunteer, closeDonate, closeBreeds].forEach((btn, i) => {
+  [closeAdopt, closeVolunteer, closeDonate, closeBreeds, closeBlog].forEach((btn, i) => {
     btn?.addEventListener("click", () => closeModal(modals[i]));
   });
 

@@ -918,6 +918,10 @@
     cursor: pointer;
   }
 
+
+.splide {
+  margin-top: 3rem;
+}
   
 /*SLIDE CAPTION*/
 .splide__slide {
@@ -950,3 +954,118 @@
     pointer-events: none; /* allows click-through */
   }
 }
+
+/* HIDE PET BLOG SECTION */
+.pet-blog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 1200px;
+  max-width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  z-index: 1001;
+  display: none;
+}
+
+.blog-section {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .blog-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+      color: #444;
+      position: sticky;
+      top: 0;
+      background: #fdfdfd;
+      padding: 10px 0;
+      z-index: 10;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* ✅ Default 4 columns */
+      gap: 25px;
+      max-height:80vh; /* ✅ Limit height */
+      overflow-y: auto; /* ✅ Enable scroll */
+      padding: 0 10px;
+      scrollbar-width: thin; /* ✅ For Firefox */
+      scrollbar-color: #ccc transparent; /* ✅ For Firefox */
+      
+      .blog-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        height: 100%;
+      
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }
+
+        img {
+          width: 100%;
+          height: 220px;
+          object-fit: cover;
+        }
+
+        .blog-content {
+          padding: 15px 20px 25px;
+
+          .date {
+            display: block;
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+          }
+
+          .post-title {
+            font-size: 1.2rem;
+            margin: 5px 0 10px;
+            color: #222;
+          }
+
+          .post-desc {
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            line-height: 1.5;
+            color: #555;
+          }
+
+          .read-more {
+            display: inline-block;
+            margin-top: 12px;
+            color: #0078d7;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s ease;
+
+            &:hover {
+              color: #0059a5;
+            }
+          }
+        }
+      }
+
+      /* ✅ Responsive adjustments */
+      @media (max-width: 1200px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (max-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+        
+      }
+    }
+  }
+

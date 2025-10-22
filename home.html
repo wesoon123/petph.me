@@ -54,12 +54,76 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Adopt</a></li>
-                <li><a href="#">Donate</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li class="modal-blog"><a href="#">Pet Blog</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Events Calendar</a></li>
+                <li><a href="#">Vet & Shelter</a></li>
             </ul>
         </nav>
         <div class="overlay"></div>
+        <div class="pet-blog">
+            <button class="btn-close">&times;</button>
+            <section class="blog-section">
+                <h1 class="blog-title">🐾 PetPH Blog</h1>
+                <div class="blog-grid">
+                <article class="blog-card">
+                    <img src="./src/image/blog-06.jpg" alt="Happy Dog">
+                    <div class="blog-content">
+                    <span class="date">October 21, 2025</span>
+                    <h2 class="post-title">How to Keep Your Dog Healthy</h2>
+                    <p class="post-desc">
+                        Learn essential tips to keep your furry friend active, happy, and healthy all year round.
+                    </p>
+                    <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <img src="./src/image/blog-07.jpg" alt="Playful Cat">
+                    <div class="blog-content">
+                    <span class="date">October 19, 2025</span>
+                    <h2 class="post-title">The Secrets of Cat Behavior</h2>
+                    <p class="post-desc">
+                        Discover what your cat’s body language really means and how to strengthen your bond.
+                    </p>
+                    <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <img src="./src/image/blog-01.jpg" alt="Adopted Pets">
+                    <div class="blog-content">
+                    <span class="date">October 15, 2025</span>
+                    <h2 class="post-title">Adoption Stories That Will Melt Your Heart</h2>
+                    <p class="post-desc">
+                        See the transformations of pets who found their forever homes through PetPH.
+                    </p>
+                    <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <img src="./src/image/layla.webp" alt="Adopted Pets">
+                    <div class="blog-content">
+                    <span class="date">October 15, 2025</span>
+                    <h2 class="post-title">A Love Beyond Words</h2>
+                    <p class="post-desc">
+                        Heartwarming moments of rescued pets finding a forever home.
+                    </p>
+                    <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <img src="./src/image/blog-08.jpg" alt="Adopted Pets">
+                    <div class="blog-content">
+                    <span class="date">October 15, 2025</span>
+                    <h2 class="post-title">New Beginnings, New Love</h2>
+                    <p class="post-desc">
+                        Witness emotional adoption moments that will melt your heart.
+                    </p>
+                    <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                </div>
+             </section>   
+        </div>
         <div class="form-container">
         <button class="btn-close">&times;</button>
         <h2>🐶 Pet Adoption Form 🐱</h2>
@@ -148,13 +212,13 @@
             </form>
         </div>
         <div class="donate-form">
-            <button class="btn-close">×</button>
+            <button class="btn-close">&times;</button>
             <h2>Scan to Donate</h2>
             <img src="./src/image/QR_Code_Example.svg.png" alt="QR Code" class="qr-img" />
         </div>
         <div class="breeds-modal" id="breed-modal">
                 <div class="modal-content">
-                    <span class="close-modal" id="close-modal">&times;</span>
+                    <button class="btn-close">&times;</button>
                     <h1>🐶 Random Dog by Breed</h1>
                     <select id="breed-select">
                     <option value="">-- Select Breed --</option>
