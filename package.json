@@ -11,10 +11,10 @@
   "name": "petph.me",
   "version": "1.0.0",
   "description": "",
-  "default": "home.html",
+  "default": "index.html",
   "scripts": {
-    "start": "parcel home.html",
-    "build": "parcel build home.html --dist-dir ./dist"
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "author": "",
   "license": "ISC"
