@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><script type="importmap">{"imports":{"2QUjV":"/marker-shadow.094aaa54.png","4SFFc":"/marker-icon-2x.b08d0278.png","kV3tA":"/marker-icon.0c4a8796.png"}}</script><link rel="stylesheet" href="/petph.me.aa436662.css">
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet me PH</title>
@@ -11,7 +11,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <!-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="/petph.me.57da488a.js" type="module"></script>
     <script src="/petph.me.ce3bd758.js" type="module"></script>
 </head>
@@ -64,6 +64,14 @@
             <section class="calendar-section">
                 <h2>🐾 PetPH Events Calendar</h2>
                 <div id="calendar"></div>
+
+                    <div id="event-modal" class="custom-modal">
+                    <div class="pet-custom-modal-content">
+                        <span class="close-btn">×</span>
+                        <h2 class="modal-title"></h2>
+                        <div class="modal-body"></div>
+                    </div>
+                    </div>
             </section>
         </div>
         <div class="pet-gallery"><button class="btn-close">×</button>

@@ -1,11 +1,11 @@
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+// vetShelter.js
+// import L from 'leaflet';
+// import 'leaflet/dist/leaflet.css';
+// import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+// import markerIcon from 'leaflet/dist/images/marker-icon.png';
+// import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 
 export function setupVetShelter() {
-  // Small delay to ensure container and CSS layout are ready
   setTimeout(() => {
     const mapContainer = document.getElementById("vet-map");
     const listContainer = document.getElementById("vet-list");
@@ -15,17 +15,15 @@ export function setupVetShelter() {
       return;
     }
 
-    // ✅ Fix Leaflet icon paths (important for npm bundlers like Parcel/Vite)
-  delete L.Icon.Default.prototype._getIconUrl;
-  L.Icon.Default.mergeOptions({
-    iconRetinaUrl: markerIcon2x,
-    iconUrl: markerIcon,
-    shadowUrl: markerShadow,
-  });
-
+    // delete L.Icon.Default.prototype._getIconUrl;
+    // L.Icon.Default.mergeOptions({
+    //   iconRetinaUrl: markerIcon2x,
+    //   iconUrl: markerIcon,
+    //   shadowUrl: markerShadow,
+    // });
 
     // ✅ Initialize map
-    const map = L.map(mapContainer).setView([10.3157, 123.8854], 12); // Default: Cebu City
+    const map = L.map("vet-map").setView([10.3157, 123.8854], 12); // Cebu City default
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
@@ -36,25 +34,25 @@ export function setupVetShelter() {
     const places = [
       {
         name: "Happy Paws Veterinary Clinic",
-        address: "SM Seaside, Cebu City",
+        address: "Fuente Osmena, Cebu City",
         type: "Vet Clinic",
-        coords: [10.314781, 123.88582],
+        coords: [10.3102, 123.8931],
       },
       {
         name: "Cebu Animal Care Shelter",
         address: "Talisay City, Cebu",
         type: "Shelter",
-        coords: [10.338461, 123.873243],
+        coords: [10.3195, 123.9054],
       },
       {
         name: "FurEver Friends Vet Center",
         address: "Lahug, Cebu City",
         type: "Vet Clinic",
-        coords: [10.330417, 123.900246],
+        coords: [10.3268, 123.9158],
       },
     ];
 
-    // ✅ Add markers to the map
+    // ✅ Add markers
     const markers = places.map((place) => {
       const marker = L.marker(place.coords).addTo(map);
       marker.bindPopup(`
@@ -68,7 +66,7 @@ export function setupVetShelter() {
       return marker;
     });
 
-    // ✅ Render left-side list
+    // ✅ Render list items
     listContainer.innerHTML = places
       .map(
         (place, index) => `
@@ -81,7 +79,7 @@ export function setupVetShelter() {
       )
       .join("");
 
-    // ✅ Handle clicks on list items
+    // ✅ Click to pan + highlight
     listContainer.addEventListener("click", (e) => {
       const item = e.target.closest(".vet-item");
       if (!item) return;
@@ -96,10 +94,6 @@ export function setupVetShelter() {
         .forEach((el) => el.classList.remove("active"));
       item.classList.add("active");
     });
-
-    // ✅ Fix: ensure the map re-renders properly after layout load
-    setTimeout(() => {
-      map.invalidateSize();
-    }, 500);
-  }, 800); // adjust delay if your layout loads slower (e.g. 800–1200ms)
+    setTimeout(() => map.invalidateSize(), 1000);
+  }, 500); // delay to ensure map container is visible
 }
