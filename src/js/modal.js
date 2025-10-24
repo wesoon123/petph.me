@@ -3,6 +3,9 @@ export function setupAdoptModal() {
 const [btnAdopt, btnVolunteer, btnDonate] = document.querySelectorAll(".key-link .key-links"); 
 const btnBreeds = document.querySelector(".breeds-btn"); 
 const btnBlog = document.querySelector(".modal-blog");
+const petGallery = document.querySelector(".modal-gallery");
+const petCalendar = document.querySelector(".modal-calendar");
+const btnVetShelter = document.querySelector(".modal-vetshelter");
 
 
   // 🟣 Modals
@@ -11,6 +14,9 @@ const btnBlog = document.querySelector(".modal-blog");
   );
   const breedsModal = document.querySelector(".breeds-modal");
   const blogModal = document.querySelector(".pet-blog");
+  const galleryModal = document.querySelector(".pet-gallery");
+  const calendarModal = document.querySelector(".pet-calendar");
+  const vetShelterModal = document.querySelector(".pet-vetshelter");
 
 
   // 🔴 Close buttons
@@ -19,11 +25,16 @@ const btnBlog = document.querySelector(".modal-blog");
   const closeDonate = donateModal?.querySelector(".btn-close");
   const closeBreeds = breedsModal?.querySelector(".btn-close");
   const closeBlog = blogModal?.querySelector(".btn-close");
+  const closeGallery = galleryModal?.querySelector(".btn-close");
+  const closeCalendar = calendarModal?.querySelector(".btn-close");
+  const closeVetShelter = vetShelterModal?.querySelector(".btn-close");
+
+  // ⚫ Overlay
 
   const overlay = document.querySelector(".overlay");
 
   // 🧩 Put all modals together for easy iteration
-  const modals = [adoptModal, volunteerModal, donateModal, breedsModal , blogModal];
+  const modals = [adoptModal, volunteerModal, donateModal, breedsModal , blogModal, galleryModal, calendarModal, vetShelterModal];
 
   if (!overlay) return;
 
@@ -33,9 +44,13 @@ const btnBlog = document.querySelector(".modal-blog");
   btnDonate?.addEventListener("click", (e) => openHandler(e, donateModal));
   btnBreeds?.addEventListener("click", (e) => openHandler(e, breedsModal));
   btnBlog?.addEventListener("click", (e) => openHandler(e, blogModal));
+  petGallery?.addEventListener("click", (e) => openHandler(e, galleryModal));
+  petCalendar?.addEventListener("click", (e) => openHandler(e, calendarModal));
+  btnVetShelter?.addEventListener("click", (e) => openHandler(e, vetShelterModal));
+
 
   // ❌ CLOSE handlers
-  [closeAdopt, closeVolunteer, closeDonate, closeBreeds, closeBlog].forEach((btn, i) => {
+  [closeAdopt, closeVolunteer, closeDonate, closeBreeds, closeBlog, closeGallery, closeCalendar, closeVetShelter].forEach((btn, i) => {
     btn?.addEventListener("click", () => closeModal(modals[i]));
   });
 

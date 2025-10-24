@@ -1,7 +1,12 @@
 import { setupAdoptModal } from "./modal.js";
 import { getBreeds, getRandomDogByBreed } from './petAPI.js';
 import { setupStatsCounter } from './statistic.js';
-AOS.init();
+import { setupGallery } from './gallery.js';
+import { setupCalendar } from './calendar.js';
+import { setupVetShelter } from './vetShelter.js';
+
+
+
 
 const select = document.getElementById('breed-select');
 const img = document.getElementById('dog-img');
@@ -9,17 +14,13 @@ const name = document.getElementById('dog-name');
 const loader = document.getElementById('loader');
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  setupAdoptModal();
-});
-
 async function loadBreeds() {
   loader.textContent = "Loading breeds... 🐾";
+ 
 
   try {
     const breeds = await getBreeds();
     loader.textContent = "";
-
     for (const breed in breeds) {
       if (breeds[breed].length) {
         breeds[breed].forEach(sub => {
@@ -65,10 +66,16 @@ async function showDog() {
   }
 }
 
-select.addEventListener('change', showDog);
-loadBreeds();
+
 
 document.addEventListener("DOMContentLoaded", () => {
   setupAdoptModal();
   setupStatsCounter();
+  loadBreeds();
+  setupGallery(document.getElementById('gallery'), document.getElementById('loader'), 15);
+  select.addEventListener("change", showDog);
+  setupCalendar();
+  setupVetShelter();
+  AOS.init();
 });
+

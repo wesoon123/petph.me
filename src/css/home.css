@@ -977,10 +977,8 @@
 
     .blog-title {
       text-align: center;
-      margin-bottom: 20px;
       font-size: clamp(1.5rem, 2.5vw, 2.5rem);
       color: #444;
-      position: sticky;
       top: 0;
       background: #fdfdfd;
       padding: 10px 0;
@@ -1069,3 +1067,273 @@
     }
   }
 
+.pet-gallery {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 1200px;
+  max-width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  z-index: 1001;
+  display: none;
+}
+
+ .masonry-gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+    max-height: 80vh;       /* limit height to 80% of viewport */
+    overflow-y: auto;       /* enable vertical scrolling */
+    padding-right: 10px;    /* space for scrollbar */
+    scroll-behavior: smooth;
+    scrollbar-width: thin; /* ✅ For Firefox */
+    scrollbar-color: #ccc transparent; /* ✅ For Firefox */
+
+    
+
+    .gallery-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    #loader {
+      text-align: center;
+      color: #666;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .gallery {
+      column-count: 4;
+      column-gap: 20px;
+
+      .gallery-item {
+        position: relative;
+        margin-bottom: 20px;
+        overflow: hidden;
+        border-radius: 10px;
+        cursor: pointer;
+        display: inline-block;
+        width: 100%;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-4px);
+        }
+
+        img {
+          width: 100%;
+          border-radius: 10px;
+          display: block;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+
+        .info {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: rgba(0, 0, 0, 0.6);
+          color: #fff;
+          padding: 10px;
+          text-align: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+
+          h3 {
+            margin: 0;
+            font-size: 1rem;
+          }
+
+          p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+          }
+        }
+
+        &:hover .info {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 1200px) {
+        column-count: 3;
+      }
+
+      @media (max-width: 900px) {
+        column-count: 2;
+      }
+
+      @media (max-width: 600px) {
+        column-count: 1;
+      }
+    }
+  }
+
+.pet-calendar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 800px;
+  max-width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  z-index: 1001;
+  display: none;
+}
+
+ #calendar {
+      background: #fff;
+      min-height: 600px;
+      border-radius: 12px;
+      overflow-y: auto;
+      max-height: 80vh;  /* ✅ Scrollable calendar */
+      padding: 10px;
+
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 4px;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        background: #999;
+      }
+    }
+  
+.pet-vetshelter {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 1200px;
+  max-width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  z-index: 1001;
+  display: none;
+}
+
+.vet-container {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 20px;
+      height: 500px;
+
+      #vet-list {
+        background: #f8f8f8;
+        border-radius: 10px;
+        padding: 15px;
+        overflow-y: auto;
+
+        .vet-item {
+          padding: 12px;
+          border-bottom: 1px solid #ddd;
+          cursor: pointer;
+          border-radius: 8px;
+          transition: background 0.3s ease;
+
+          &:hover {
+            background: #e9f3ff;
+          }
+
+          &.active {
+            background: #cfe7ff;
+            font-weight: bold;
+          }
+
+          h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #222;
+          }
+
+          p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+            color: #555;
+          }
+
+          span {
+            font-size: 0.85rem;
+            color: #0078d7;
+          }
+        }
+
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #ccc;
+          border-radius: 4px;
+        }
+      }
+
+      #vet-map {
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .vet-container {
+        grid-template-columns: 1fr;
+        height: auto;
+        max-height: 80vh;       /* limit height to 80% of viewport */
+        overflow-y: auto;       /* enable vertical scrolling */
+        padding-right: 10px;    /* space for scrollbar */
+        scroll-behavior: smooth;
+        scrollbar-width: thin; /* ✅ For Firefox */
+        scrollbar-color: #ccc transparent; /* ✅ For Firefox */
+        #vet-map {
+          height: 400px;
+        }
+      }
+    }
+
+#vet-map {
+  height: 450px;
+  min-height: 400px;
+  background: #eaeaea;
+  border-radius: 10px;
+}
+
+#vet-list {
+  overflow-y: auto;
+  max-height: 450px;
+}
+
+.vet-item {
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.vet-item:hover {
+  background: #f0f8ff;
+}
+
+.vet-item.active {
+  background: #dbeafe;
+  border-left: 4px solid #0078d7;
+}

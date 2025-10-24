@@ -12,6 +12,8 @@
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <!-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> -->
     <script src="./src/js/home.js" type="module"></script>
     <script src="./src/js/slide.js" type="module"></script>
 </head>
@@ -55,12 +57,34 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li class="modal-blog"><a href="#">Pet Blog</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Events Calendar</a></li>
-                <li><a href="#">Vet & Shelter</a></li>
+                <li class="modal-gallery"><a href="#">Gallery</a></li>
+                <li class="modal-calendar"><a href="#">Events Calendar</a></li>
+                <li class="modal-vetshelter"><a href="#">Vet & Shelter</a></li>
             </ul>
         </nav>
         <div class="overlay"></div>
+         <div class="pet-vetshelter"><button class="btn-close">&times;</button>
+            <section class="vet-shelter-section">
+                <h2>🐾 Nearby Vets & Shelters</h2>
+                <div class="vet-container">
+                    <div id="vet-list"></div>
+                    <div id="vet-map"></div>
+                </div>
+            </section>
+        </div>
+        <div class="pet-calendar"><button class="btn-close">&times;</button>
+            <section class="calendar-section">
+                <h2>🐾 PetPH Events Calendar</h2>
+                <div id="calendar"></div>
+            </section>
+        </div>
+        <div class="pet-gallery"><button class="btn-close">&times;</button>
+            <h1 class="gallery-title blog-title">🐾 Pet Masonry Gallery</h1>
+            <section class="masonry-gallery">
+                <p id="loader">Loading breeds... 🐾</p>
+                <div class="gallery" id="gallery"></div>
+            </section>
+        </div>
         <div class="pet-blog">
             <button class="btn-close">&times;</button>
             <section class="blog-section">
