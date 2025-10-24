@@ -1,0 +1,64 @@
+*, :before, :after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  scroll-behavior: smooth;
+  interpolate-size: allow-keywords;
+  height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+img, picture, video, canvas, svg {
+  max-width: 100%;
+  display: block;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+p, li, figcaption {
+  text-wrap: pretty;
+  max-width: 65ch;
+}
+
+header, footer, main, section, article, aside {
+  container-type: inline-size;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+/*# sourceMappingURL=petph.me.008b0dfe.css.map */
